@@ -26,7 +26,7 @@ class PostCreatePasswordControllerTest {
     }
 
     @Test
-    fun `should return a successfull response`() {
+    fun `should return a successful response`() {
         every { passwordCreator.create(any(), any(), any()) } returns Unit
 
         val passwordId = "03ef970b-719d-49c5-8d80-7dc762fe4be6"
