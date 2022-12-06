@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:14.5:///password_database
+    username: password_username
+    password: password_password
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
