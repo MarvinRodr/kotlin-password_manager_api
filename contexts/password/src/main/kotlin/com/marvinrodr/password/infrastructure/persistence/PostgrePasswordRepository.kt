@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 
 class PostgrePasswordRepository(private val jdbcTemplate: NamedParameterJdbcTemplate) : PasswordRepository {
 
-    override fun save(password: Password){
+    override fun save(password: Password) {
         MapSqlParameterSource()
             .addValue("id", password.id.value.toString())
             .addValue("name", password.name.value)
@@ -38,6 +38,17 @@ class PostgrePasswordRepository(private val jdbcTemplate: NamedParameterJdbcTemp
 
     } catch (exception: Throwable) {
         Left(PasswordNotFoundError(id))
+    }
+
+    override fun delete(id: PasswordId) {
+        MapSqlParameterSource()
+            .addValue("id", id.value.toString())
+            .let { params ->
+                jdbcTemplate.update(
+                    "DELETE FROM password WHERE id = :id",
+                    params
+                )
+            }
     }
 
     private fun mapRow(): RowMapper<Password> {

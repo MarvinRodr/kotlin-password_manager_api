@@ -2,6 +2,7 @@ package com.marvinrodr.password.domain
 
 import com.marvinrodr.common.domain.DomainEvent
 import com.marvinrodr.password.domain.events.PasswordCreated
+import com.marvinrodr.password.domain.events.PasswordDeleted
 import java.time.LocalDateTime
 import java.util.UUID
 
@@ -46,18 +47,13 @@ data class Password(
     val events: List<DomainEvent>
 ) {
     companion object {
-        fun create(
-            id: PasswordId,
-            name: PasswordName,
-            secretKey: PasswordSecretKey,
-        ) = LocalDateTime.now().let { createdAt ->
-            Password(
-                id,
-                name,
-                secretKey,
-                createdAt,
-                listOf(PasswordCreated(id, name, secretKey, createdAt))
-            )
+        fun create(id: PasswordId, name: PasswordName, secretKey: PasswordSecretKey) =
+            LocalDateTime.now().let {
+                createdAt ->
+                    Password(id, name, secretKey, createdAt, listOf(PasswordCreated(id, name, secretKey, createdAt)))
         }
+
+        fun delete(id: PasswordId, name: PasswordName, secretKey: PasswordSecretKey, createdAt: LocalDateTime) =
+            Password(id, name, secretKey, createdAt, listOf(PasswordDeleted(id, name, secretKey, createdAt)))
     }
 }
