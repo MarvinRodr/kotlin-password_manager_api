@@ -22,7 +22,15 @@ class PostgrePasswordRepository(private val jdbcTemplate: NamedParameterJdbcTemp
             .addValue("createdAt", password.createdAt)
             .let { params ->
                 jdbcTemplate.update(
-                    "INSERT INTO password (id, name, secret_key, created_at) VALUES (:id,:name, :secretKey, :createdAt)",
+                    """
+                        INSERT INTO 
+                            password (id, name, secret_key, created_at)
+                        VALUES (:id, :name, :secretKey, :createdAt)
+                        ON CONFLICT (id)
+                        DO UPDATE SET
+                            name = EXCLUDED.name,
+                            secret_key = EXCLUDED.secret_key
+                    """.trimIndent(),
                     params
                 )
             }
