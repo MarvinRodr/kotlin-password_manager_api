@@ -24,7 +24,7 @@ class GetFindPasswordAcceptanceTestRestAssure: BaseAcceptanceTest() {
     @Sql("classpath:db/fixtures/password/find/add-password-data.sql")
     fun `should find password successfully`() {
         When {
-            get("/password/${password.id.value}")
+            get("$version/password/${password.id.value}")
         } Then {
             statusCode(HttpStatus.OK.value())
         } Extract {
@@ -39,7 +39,7 @@ class GetFindPasswordAcceptanceTestRestAssure: BaseAcceptanceTest() {
             contentType(ContentType.JSON)
             body("")
         } When {
-            get("/password/${password.id.value}")
+            get("$version/password/${password.id.value}")
         } Then {
             statusCode(HttpStatus.OK.value())
         } Extract {
@@ -52,6 +52,7 @@ class GetFindPasswordAcceptanceTestRestAssure: BaseAcceptanceTest() {
     }
 
     companion object {
+        private const val version = "/api/v1"
         private val now = LocalDateTime.parse("2022-08-31T09:07:36")
         private val password = PasswordMother.sample(
             id = "7ab75530-5da7-4b4a-b083-a779dd6c759e",

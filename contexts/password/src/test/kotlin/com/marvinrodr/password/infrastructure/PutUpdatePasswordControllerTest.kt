@@ -6,8 +6,8 @@ import com.marvinrodr.password.application.update.PasswordUpdater
 import com.marvinrodr.password.domain.PasswordId
 import com.marvinrodr.password.domain.PasswordResponse
 import com.marvinrodr.password.domain.customErrors.PasswordNotFoundError
-import com.marvinrodr.password.infrastructure.rest.update.PutUpdatePasswordController
-import com.marvinrodr.password.infrastructure.rest.update.UpdatePasswordRequest
+import com.marvinrodr.password.infrastructure.rest.v1.PutUpdatePasswordController
+import com.marvinrodr.password.infrastructure.rest.v1.UpdatePasswordRequest
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach

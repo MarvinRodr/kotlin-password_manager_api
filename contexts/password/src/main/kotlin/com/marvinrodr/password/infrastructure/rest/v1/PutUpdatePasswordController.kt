@@ -1,4 +1,4 @@
-package com.marvinrodr.password.infrastructure.rest.update
+package com.marvinrodr.password.infrastructure.rest.v1
 
 
 import com.marvinrodr.password.application.update.PasswordUpdater
@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping("/api/v1")
 class PutUpdatePasswordController(private val passwordUpdater: PasswordUpdater) {
 
     @PutMapping("/password/{id}")

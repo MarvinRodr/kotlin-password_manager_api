@@ -6,7 +6,7 @@ import com.marvinrodr.password.application.find.PasswordFinder
 import com.marvinrodr.password.domain.PasswordResponse
 import com.marvinrodr.password.domain.PasswordId
 import com.marvinrodr.password.domain.customErrors.PasswordNotFoundError
-import com.marvinrodr.password.infrastructure.rest.find.GetFindPasswordByIdController
+import com.marvinrodr.password.infrastructure.rest.v1.GetFindPasswordByIdController
 import io.mockk.every
 import io.mockk.mockk
 import java.time.LocalDateTime

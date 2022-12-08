@@ -24,9 +24,13 @@ class PostCreatePasswordAcceptanceTestRestAssure: BaseAcceptanceTest() {
                 """
             )
         } When  {
-            post("/password")
+            post("$version/password")
         } Then  {
             statusCode(HttpStatus.CREATED.value())
         }
+    }
+
+    companion object {
+        private const val version = "/api/v1"
     }
 }

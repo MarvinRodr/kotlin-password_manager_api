@@ -30,7 +30,7 @@ class PutUpdatePasswordAcceptanceTestRestAssure: BaseAcceptanceTest() {
                 """
             )
         } When {
-            put("/password/${password.id.value}")
+            put("$version/password/${password.id.value}")
         } Then {
             statusCode(HttpStatus.OK.value())
         } Extract {
@@ -53,13 +53,14 @@ class PutUpdatePasswordAcceptanceTestRestAssure: BaseAcceptanceTest() {
                 """
             )
         } When {
-            put("/password/$notExistingPasswordId")
+            put("$version/password/$notExistingPasswordId")
         } Then {
             statusCode(HttpStatus.NOT_FOUND.value())
         }
     }
 
     companion object {
+        private const val version = "/api/v1"
         private val now = LocalDateTime.parse("2022-08-31T09:07:36")
         private val password = PasswordMother.sample(
             id = "7ab75530-5da7-4b4a-b083-a779dd6c759e",

@@ -1,23 +1,22 @@
-package com.marvinrodr.password.infrastructure.rest.find
+package com.marvinrodr.password.infrastructure.rest.v1
 
-import com.marvinrodr.password.application.find.PasswordFinder
-import com.marvinrodr.password.domain.PasswordResponse
+import com.marvinrodr.password.application.delete.PasswordEraser
+import com.marvinrodr.password.domain.*
 import com.marvinrodr.password.domain.customErrors.PasswordCannotBeFoundError
 import com.marvinrodr.password.domain.customErrors.PasswordNotFoundError
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
-class GetFindPasswordByIdController(private val passwordFinder: PasswordFinder) {
+@RequestMapping("/api/v1")
+class DeletePasswordController(private val passwordEraser: PasswordEraser) {
 
-    @GetMapping("/password/{id}")
+    @DeleteMapping("/password/{id}")
     fun execute(
         @PathVariable id: String
-    ): ResponseEntity<PasswordResponse> = passwordFinder.execute(id).fold(
-        ifRight = { ResponseEntity.ok().body(it) },
+    ): ResponseEntity<Unit> = passwordEraser.execute(id).fold(
+        ifRight = { ResponseEntity.ok().build() },
         ifLeft = {
             when (it) {
                 is PasswordNotFoundError ->

@@ -1,4 +1,4 @@
-package com.marvinrodr.password.infrastructure.rest.create
+package com.marvinrodr.password.infrastructure.rest.v1
 
 import com.marvinrodr.password.application.create.PasswordCreator
 import com.marvinrodr.password.domain.*
@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping("/api/v1")
 class PostCreatePasswordController(private val passwordCreator: PasswordCreator) {
 
     @PostMapping("/password")

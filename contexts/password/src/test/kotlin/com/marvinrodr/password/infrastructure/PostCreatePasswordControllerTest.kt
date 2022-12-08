@@ -3,8 +3,8 @@ package com.marvinrodr.password.infrastructure
 import com.marvinrodr.password.application.create.PasswordCreator
 import com.marvinrodr.password.domain.InvalidPasswordIdException
 import com.marvinrodr.password.domain.InvalidPasswordNameException
-import com.marvinrodr.password.infrastructure.rest.create.CreatePasswordRequest
-import com.marvinrodr.password.infrastructure.rest.create.PostCreatePasswordController
+import com.marvinrodr.password.infrastructure.rest.v1.CreatePasswordRequest
+import com.marvinrodr.password.infrastructure.rest.v1.PostCreatePasswordController
 import io.mockk.every
 import io.mockk.mockk
 import java.net.URI

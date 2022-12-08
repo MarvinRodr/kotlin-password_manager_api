@@ -5,7 +5,7 @@ import com.marvinrodr.common.Right
 import com.marvinrodr.password.application.delete.PasswordEraser
 import com.marvinrodr.password.domain.PasswordId
 import com.marvinrodr.password.domain.customErrors.PasswordNotFoundError
-import com.marvinrodr.password.infrastructure.rest.delete.DeletePasswordController
+import com.marvinrodr.password.infrastructure.rest.v1.DeletePasswordController
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
