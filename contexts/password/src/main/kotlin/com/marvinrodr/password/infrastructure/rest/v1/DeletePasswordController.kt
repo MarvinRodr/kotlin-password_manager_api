@@ -3,6 +3,7 @@ package com.marvinrodr.password.infrastructure.rest.v1
 import com.marvinrodr.password.application.delete.PasswordEraser
 import com.marvinrodr.password.domain.*
 import com.marvinrodr.password.domain.customErrors.PasswordCannotBeFoundError
+import com.marvinrodr.password.domain.customErrors.PasswordIdNotValidError
 import com.marvinrodr.password.domain.customErrors.PasswordNotFoundError
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -22,6 +23,10 @@ class DeletePasswordController(private val passwordEraser: PasswordEraser) {
                 is PasswordNotFoundError ->
                     ResponseEntity
                         .status(HttpStatus.NOT_FOUND)
+                        .build()
+                is PasswordIdNotValidError ->
+                    ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
                         .build()
                 is PasswordCannotBeFoundError ->
                     ResponseEntity

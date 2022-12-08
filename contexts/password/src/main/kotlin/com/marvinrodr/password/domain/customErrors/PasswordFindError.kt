@@ -6,3 +6,4 @@ sealed class PasswordFindError(message: String): Error()
 
 data class PasswordNotFoundError(val id: PasswordId) : PasswordFindError("The password with id <${id.value}> was not found")
 data class PasswordCannotBeFoundError(val id: PasswordId) : PasswordFindError("Something went wrong trying to find a password with id <${id.value}>")
+data class PasswordIdNotValidError(val id: String) : PasswordFindError("The password with id <${id}> is not valid")

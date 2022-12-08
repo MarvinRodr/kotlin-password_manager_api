@@ -3,6 +3,7 @@ package com.marvinrodr.password.infrastructure.rest.v1
 import com.marvinrodr.password.application.find.PasswordFinder
 import com.marvinrodr.password.domain.PasswordResponse
 import com.marvinrodr.password.domain.customErrors.PasswordCannotBeFoundError
+import com.marvinrodr.password.domain.customErrors.PasswordIdNotValidError
 import com.marvinrodr.password.domain.customErrors.PasswordNotFoundError
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -25,6 +26,10 @@ class GetFindPasswordByIdController(private val passwordFinder: PasswordFinder) 
                 is PasswordNotFoundError ->
                     ResponseEntity
                         .status(HttpStatus.NOT_FOUND)
+                        .build()
+                is PasswordIdNotValidError ->
+                    ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
                         .build()
                 is PasswordCannotBeFoundError ->
                     ResponseEntity
