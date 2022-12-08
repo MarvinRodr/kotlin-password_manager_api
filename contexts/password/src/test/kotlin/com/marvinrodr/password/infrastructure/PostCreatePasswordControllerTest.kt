@@ -1,5 +1,6 @@
 package com.marvinrodr.password.infrastructure
 
+import com.marvinrodr.common.Right
 import com.marvinrodr.password.application.create.PasswordCreator
 import com.marvinrodr.password.domain.InvalidPasswordIdException
 import com.marvinrodr.password.domain.InvalidPasswordNameException
@@ -27,7 +28,7 @@ class PostCreatePasswordControllerTest {
 
     @Test
     fun `should return a successful response`() {
-        every { passwordCreator.create(any(), any(), any()) } returns Unit
+        every { passwordCreator.create(any(), any(), any()) } returns Right(Unit)
 
         val passwordId = "03ef970b-719d-49c5-8d80-7dc762fe4be6"
         val response = controller.execute(CreatePasswordRequest(passwordId, "Test", "my_successfully_secret_key"))
