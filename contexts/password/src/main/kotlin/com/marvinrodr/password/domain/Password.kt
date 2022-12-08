@@ -55,5 +55,8 @@ data class Password(
 
         fun delete(id: PasswordId, name: PasswordName, secretKey: PasswordSecretKey, createdAt: LocalDateTime) =
             Password(id, name, secretKey, createdAt, listOf(PasswordDeleted(id, name, secretKey, createdAt)))
+
+        fun update(id: PasswordId, name: PasswordName, secretKey: PasswordSecretKey, createdAt: LocalDateTime) =
+            Password(id, name, secretKey, createdAt, listOf(PasswordCreated(id, name, secretKey, createdAt)))
     }
 }
